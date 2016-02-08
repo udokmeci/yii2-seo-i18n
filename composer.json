@@ -1,0 +1,34 @@
+{
+    "name": "udokmeci/yii2-seo-i18n",
+    "description": "All SEO require for yii2 with i18n",
+    "keywords": ["og", "seo", "yii2"],
+    "homepage": "https://github.com/udokmeci/yii2-seo-i18n",
+    "type": "yii2-extension",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Uğur DÖKMECİ",
+            "email": "ugurdokmeci@gmail.com",
+            "homepage": "https://github.com/udokmeci/yii2-phone-validator",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "ugurdokmeci@gmail.com",
+        "source": "https://github.com/udokmeci/yii2-phone-validator"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "udokmeci\\yii2SeoI18n\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

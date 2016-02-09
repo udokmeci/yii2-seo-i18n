@@ -6,6 +6,7 @@ use yii\base\Behavior;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
 use yii\helpers\Html;
+use yii\base\InvalidConfigException;
 
 class SeoViewBehavior extends Behavior
 {
@@ -26,12 +27,13 @@ class SeoViewBehavior extends Behavior
     public function events()
     {
         return [
-            View::EVENT_AFTER_RENDER => 'afterRender',
+            //View::EVENT_AFTER_RENDER => 'afterRender',
         ];
     }
 
     public function setItem(SeoItemInterface $item)
     {
+
         $this->_item=$item;
         return $this;
     }
@@ -44,18 +46,33 @@ class SeoViewBehavior extends Behavior
 
     public function renderPart($key)
     {
-        if (!isset($this->generators[$key])) {
-            throw new InvalidConfigException("Unconfigured part $key");
+        try {
+
+            if (!isset($this->_item)) {
+                throw new InvalidConfigException("Seo Item is not set");
+            }
+            if (!isset($this->_site)) {
+                throw new InvalidConfigException("Seo Site is not set");
+            }
+            if (!isset($this->generators[$key])) {
+                throw new InvalidConfigException("Unconfigured part $key");
+            }
+            $outputs='';
+            foreach ($this->generators[$key] as $gkey => $generator) {
+                $this->_generators[]= $generated = Yii::createObject(ArrayHelper::merge([
+                    'site'=>$this->_site,
+                    'item'=>$this->_item,
+                    'behavior'=>$this,
+                    'view'=>$this->owner,
+                ], $generator));
+                $outputs.=$generated->render();
+            }
+        } catch (\Exception $e) {
+            if (defined('YII_ENV_DEV') && YII_ENV_DEV) {
+                throw $e;
+            }
         }
-        foreach ($this->generators[$key] as $gkey => $generator) {
-            $this->_generators[]= $generated = Yii::createObject(ArrayHelper::merge([
-                'site'=>$this->_site,
-                'item'=>$this->_item,
-                'behavior'=>$this,
-                'view'=>$this->owner,
-            ], $generator));
-            $generated->render();
-        }
+        return $outputs;
     }
     //favicon
     //title

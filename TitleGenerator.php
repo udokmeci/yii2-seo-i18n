@@ -5,8 +5,9 @@ use yii\helpers\Html;
 
 class TitleGenerator extends BaseSeoGenerator
 {
+    public $seperator = ' - ';
     public function render()
     {
-        return implode(' - ', [$this->item->getSeoData()->title, $this->item->getSeoData()->title]);
+        return Html::tag('title', implode($this->seperator, [$this->item->getSeoData()->title, $this->site->getSeoData()->title]));
     }
 }

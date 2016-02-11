@@ -46,6 +46,7 @@ class SeoViewBehavior extends Behavior
 
     public function renderPart($key)
     {
+        $outputs='';
         try {
 
             if (!isset($this->_item)) {
@@ -57,7 +58,7 @@ class SeoViewBehavior extends Behavior
             if (!isset($this->generators[$key])) {
                 throw new InvalidConfigException("Unconfigured part $key");
             }
-            $outputs='';
+           
             foreach ($this->generators[$key] as $gkey => $generator) {
                 $this->_generators[]= $generated = Yii::createObject(ArrayHelper::merge([
                     'site'=>$this->_site,

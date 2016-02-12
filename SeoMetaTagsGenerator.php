@@ -40,7 +40,7 @@ class SeoMetaTagsGenerator extends BaseSeoGenerator
         $defaults=ArrayHelper::merge($this->defaults, $robots);
         $this->_all=
             ArrayHelper::merge(
-                $this->defaults,
+                $defaults,
                 $this->site->getSeoData(),
                 (array)$this->item->getSeoData()
             );

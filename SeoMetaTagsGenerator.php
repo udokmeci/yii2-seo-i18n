@@ -38,12 +38,12 @@ class SeoMetaTagsGenerator extends BaseSeoGenerator
             ];
         }
         $defaults=ArrayHelper::merge($this->defaults, $robots);
-        $this->_all=
+        $this->_all=array_filter(
             ArrayHelper::merge(
                 $defaults,
                 $this->site->getSeoData(),
                 (array)$this->item->getSeoData()
-            );
+            ));
         return parent::init();
     }
 

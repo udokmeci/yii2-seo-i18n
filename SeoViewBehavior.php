@@ -49,6 +49,7 @@ class SeoViewBehavior extends Behavior
         $outputs='';
         try {
 
+
             if (!isset($this->_item)) {
                 throw new InvalidConfigException("Seo Item is not set");
             }
@@ -69,9 +70,9 @@ class SeoViewBehavior extends Behavior
                 $outputs.=$generated->render();
             }
         } catch (\Exception $e) {
-            if (defined('YII_ENV_DEV') && YII_ENV_DEV) {
-                throw $e;
-            }
+
+            throw $e;
+
         }
         return $outputs;
     }

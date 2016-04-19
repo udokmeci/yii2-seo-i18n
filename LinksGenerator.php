@@ -31,7 +31,7 @@ class LinksGenerator extends BaseSeoGenerator
     {
         $outputs='';
         foreach ($this->site->getSeoLocales() as $locale => $name) {
-            $outputs.='<link rel="alternate" hreflang="'. $locale .'" href="'. Url::to(['/'.\Yii::$app->requestedRoute] + ['locale' => $locale] + \Yii::$app->getRequest()->getQueryParams(), true) .'" />';
+            $outputs.='<link rel="alternate" hreflang="'. substr($locale,0,2) .'" href="'. Url::to(['/'.\Yii::$app->requestedRoute] + ['locale' => $locale] + \Yii::$app->getRequest()->getQueryParams(), true) .'" />';
         }
 
         $outputs.='<link rel="alternate" hreflang="x-default" href="'. Url::to(['/'.\Yii::$app->requestedRoute]  + ['locale' => $this->site->getSeoData()->defaultLocale ] + \Yii::$app->getRequest()->getQueryParams(), false).'" />';

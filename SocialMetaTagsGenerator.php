@@ -9,9 +9,13 @@ class SocialMetaTagsGenerator extends BaseSeoGenerator
 {
     public $prefix;
     public $attribute;
+    public $allowedTags = [
+
+    ];
 
     public $defaults = [
         'title' => '',
+        'type' => '',
         'description' => '',
         'image' => '',
         'url' => '',

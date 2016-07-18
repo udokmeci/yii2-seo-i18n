@@ -37,6 +37,12 @@ class SeoViewBehavior extends Behavior
         $this->_item=$item;
         return $this;
     }
+    
+    public function getItem()
+    {
+
+        return $this->_item;
+    }
 
     public function setSite(SeoSiteInterface $site)
     {

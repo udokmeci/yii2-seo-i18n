@@ -38,6 +38,9 @@ class LinksGenerator extends BaseSeoGenerator
         if (isset($this->item->getSeoData()->canonicalUrl)) {
             $outputs.='<link rel="canonical" href="'. $this->item->getSeoData()->canonicalUrl .'" />';
         }
+        if (isset($this->item->getSeoData()->amphtml)) {
+            $outputs.='<link rel="amphtml" href="'. $this->item->getSeoData()->amphtml .'" />';
+        }
 
         if (isset($this->site->getSeoData()->icon)) {
             $outputs.='<link rel="shortcut icon" type="image/x-icon" href="'. $this->site->getSeoData()->icon .'" />';

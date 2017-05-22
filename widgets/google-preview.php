@@ -1,13 +1,12 @@
-<?php
 
-?>
 <div class="g">
 	<div class="rc" data-hveid="25">
 		<h3 class="r">
-			<a href="<?= $canonicalUrl ?>" >
+			<a title="<?=$title?>" href="<?= $canonicalUrl ?>" >
 				<?= $title ?>
 			</a>
 		</h3>
+	</div>
 	<div class="s">
 		<div>
 			<div class="f kv _SWb" style="white-space:nowrap">

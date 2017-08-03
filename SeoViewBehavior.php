@@ -28,7 +28,7 @@ class SeoViewBehavior extends Behavior
     public function events()
     {
         return [
-            View::EVENT_END_PAGE => 'registerMicroData',
+            View::EVENT_END_BODY => 'registerMicroData',
         ];
     }
 

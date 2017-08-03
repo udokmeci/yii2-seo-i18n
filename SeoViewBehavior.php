@@ -6,6 +6,7 @@ use yii\base\Behavior;
 use yii\helpers\ArrayHelper;
 use yii\web\View;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\base\InvalidConfigException;
 
 class SeoViewBehavior extends Behavior
@@ -27,7 +28,7 @@ class SeoViewBehavior extends Behavior
     public function events()
     {
         return [
-            //View::EVENT_AFTER_RENDER => 'afterRender',
+            View::EVENT_END_PAGE => 'registerMicroData',
         ];
     }
 
@@ -43,6 +44,17 @@ class SeoViewBehavior extends Behavior
 
         return $this->_item;
     }
+    
+    public function registerMicroData()
+    {
+        if($this->_item instanceof MicroDataInterface)
+        {
+            $microData= $this->_item->getMicroData();
+            echo Html::tag('script',Json::encode($microData),['type'=>'application/ld+json']);
+        }
+        
+    }
+    
 
     public function setSite(SeoSiteInterface $site)
     {

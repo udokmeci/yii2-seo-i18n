@@ -15,7 +15,7 @@
 			</div>
 			
 			<span class="st">
-				<?= substr($description,0,170) ?>
+				<?= mb_substr($description,0,170) ?>
 			</span>	
 		</div>
 	</div>

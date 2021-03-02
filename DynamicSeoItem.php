@@ -2,9 +2,9 @@
 
 namespace udokmeci\yii2SeoI18n;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 
-class DynamicSeoItem extends Object implements SeoItemInterface
+class DynamicSeoItem extends BaseObject implements SeoItemInterface
 {
     public $description;
     public $keywords;

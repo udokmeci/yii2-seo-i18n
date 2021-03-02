@@ -2,9 +2,9 @@
 namespace udokmeci\yii2SeoI18n;
 
 use Yii;
-use yii\base\Object;
+use yii\base\BaseObject;
 
-abstract class BaseSeoGenerator extends Object
+abstract class BaseSeoGenerator extends BaseObject
 {
     public $item;
     public $site;
